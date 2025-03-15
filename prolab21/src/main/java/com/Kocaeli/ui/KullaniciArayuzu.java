@@ -12,7 +12,8 @@ public class KullaniciArayuzu {
     public static void main(String[] args) {
         Gson gson = new Gson();
         UlasimVerisi veri;
-        try (Reader reader = new InputStreamReader(KullaniciArayuzu.class.getResourceAsStream("/veriseti.json"))) {
+        try (Reader reader = new InputStreamReader(KullaniciArayuzu.class.getResourceAsStream("/" +
+                "veriseti.json"))) {
             veri = gson.fromJson(reader, UlasimVerisi.class);
         } catch (Exception e) {
             e.printStackTrace();

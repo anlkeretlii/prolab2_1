@@ -1,16 +1,15 @@
 package com.Kocaeli.model;
 
 public class SonrakiDurak {
-    private String stopId;   // Sonraki durağın ID’si
-    private double mesafe;   // Mesafe (km)
-    private int sure;        // Süre (dakika)
-    private double ucret;    // Ücret (TL)
+    private String stopId;
+    private double mesafe;
+    private int sure;
+    private double ucret;
 
-    // JSON’dan gelen veriler için varsayılan yapıcı (Gson tarafından kullanılır)
-    public SonrakiDurak() {
-    }
+    // Parametresiz constructor (Gson için)
+    public SonrakiDurak() {}
 
-    // Ters yön desteği için manuel yapıcı
+    // Parametreli constructor
     public SonrakiDurak(String stopId, double mesafe, int sure, double ucret) {
         this.stopId = stopId;
         this.mesafe = mesafe;
@@ -18,48 +17,15 @@ public class SonrakiDurak {
         this.ucret = ucret;
     }
 
-    // Getter’lar
-    public String getStopId() {
-        return stopId;
-    }
+    // Getter'lar
+    public String getStopId() { return stopId; }
+    public double getMesafe() { return mesafe; }
+    public int getSure() { return sure; }
+    public double getUcret() { return ucret; }
 
-    public double getMesafe() {
-        return mesafe;
-    }
-
-    public int getSure() {
-        return sure;
-    }
-
-    public double getUcret() {
-        return ucret;
-    }
-
-    // Setter’lar (Gson için gerekli)
-    public void setStopId(String stopId) {
-        this.stopId = stopId;
-    }
-
-    public void setMesafe(double mesafe) {
-        this.mesafe = mesafe;
-    }
-
-    public void setSure(int sure) {
-        this.sure = sure;
-    }
-
-    public void setUcret(double ucret) {
-        this.ucret = ucret;
-    }
-
-    // Debugging için toString metodu (opsiyonel)
-    @Override
-    public String toString() {
-        return "SonrakiDurak{" +
-                "stopId='" + stopId + '\'' +
-                ", mesafe=" + mesafe +
-                ", sure=" + sure +
-                ", ucret=" + ucret +
-                '}';
-    }
+    // Setter'lar (isteğe bağlı, Gson için gerekli değil ama ekleyebiliriz)
+    public void setStopId(String stopId) { this.stopId = stopId; }
+    public void setMesafe(double mesafe) { this.mesafe = mesafe; }
+    public void setSure(int sure) { this.sure = sure; }
+    public void setUcret(double ucret) { this.ucret = ucret; }
 }

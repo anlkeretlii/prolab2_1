@@ -15,3 +15,4 @@ public class Taksi extends Arac {
         return acilisUcreti + (mesafe * kmBasiUcret);
     }
 }
+

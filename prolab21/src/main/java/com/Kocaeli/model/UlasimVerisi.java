@@ -1,17 +1,35 @@
 package com.Kocaeli.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import javax.swing.JOptionPane;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 
 public class UlasimVerisi {
-    private String city;
-    private TaksiBilgi taxi;
     private List<Durak> duraklar;
+    private Taksi taxi;
 
-    // Getters ve Setters
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
-    public TaksiBilgi getTaxi() { return taxi; }
-    public void setTaxi(TaksiBilgi taxi) { this.taxi = taxi; }
-    public List<Durak> getDuraklar() { return duraklar; }
-    public void setDuraklar(List<Durak> duraklar) { this.duraklar = duraklar; }
+    public UlasimVerisi() {
+        Gson gson = new Gson();
+        try (Reader reader = new FileReader("src/main/resources/veriseti.json")) {
+            UlasimVerisi ulasimVerisi = gson.fromJson(reader, UlasimVerisi.class);
+            this.duraklar = ulasimVerisi.duraklar;
+            this.taxi = ulasimVerisi.taxi;
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "JSON dosyası yüklenemedi: " + e.getMessage(), "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+    public List<Durak> getDuraklar() {
+        return duraklar;
+    }
+
+    public Taksi getTaxi() {
+        return taxi;
+    }
 }
